@@ -17,13 +17,14 @@ public:
         A[1].x = 11; A[1].y = 10;
         A[2].x = 12; A[2].y = 10;
     }
-    void Ve(){
+    void Ve(Point Qua){
         for (int i = 0; i < DoDai; i++){
             gotoxy(A[i].x,A[i].y);
             cout<<"X";
         }
+        gotoxy(Qua.x,Qua.y); cout<<"*";
     }
-    void DiChuyen(int Huong){
+    void DiChuyen(int Huong, Point& Qua){
         for (int i = DoDai-1; i>0;i--)
             A[i] = A[i-1];
         if (Huong==0) A[0].x = A[0].x + 1;
@@ -31,6 +32,11 @@ public:
         if (Huong==2) A[0].x = A[0].x - 1;
         if (Huong==3) A[0].y = A[0].y - 1;
 
+        if (A[0].x == Qua.x && A[0].y == Qua.y){
+            DoDai++;
+            Qua.x = rand()%50;
+            Qua.y = rand()%20;
+        }
     }
 };
 
