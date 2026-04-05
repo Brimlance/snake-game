@@ -34,8 +34,8 @@ public:
 
         if (A[0].x == Qua.x && A[0].y == Qua.y){
             DoDai++;
-            Qua.x = rand()%50;
-            Qua.y = rand()%20;
+            Qua.x = rand() % (MAXX - MINX) + MINX;
+            Qua.y = rand() % (MAXY - MINY) + MINY;
         }
     }
 };
@@ -45,6 +45,10 @@ int main()
     CONRAN r;
     int Huong = 0;
     char t;
+    Point Qua;
+    srand((int)time(0));
+    Qua.x = rand() % (MAXX - MINX) + MINX;
+    Qua.y = rand() % (MAXY - MINY) + MINY;
 
     while (1){
         if (kbhit()){
@@ -55,8 +59,8 @@ int main()
             if (t=='x') Huong = 1;
         }
         system("cls");
-        r.Ve();
-        r.DiChuyen(Huong);
+        r.Ve(Qua);
+        r.DiChuyen(Huong, Qua);
         Sleep(300);
     }
 
